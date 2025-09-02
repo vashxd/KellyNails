@@ -54,6 +54,37 @@
             </div>
         </section>
 
+        <section class="promo-section">
+            <div class="container">
+                <div class="promo-content">
+                    <div class="promo-video">
+                        <video controls muted autoplay loop>
+                            <source src="video.mp4" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
+                    </div>
+                    <div class="promo-text">
+                        <div class="promo-card">
+                            <h3>Primeira Visita Especial</h3>
+                            <p class="promo-highlight">Agende hoje mesmo e ganhe um mimo especial na sua primeira visita.</p>
+                            <div class="promo-cta">
+                                <a href="#contato" class="btn btn-primary">Agendar Agora</a>
+                            </div>
+                        </div>
+                        <div class="promo-card">
+                            <h3>Pacotes Exclusivos</h3>
+                            <p class="promo-price">Pacotes exclusivos de manicure + pedicure a partir de R$ 60,00.</p>
+                            <div class="promo-cta">
+                                <a href="https://l.instagram.com/?u=https%3A%2F%2Fapi.whatsapp.com%2Fsend%2F%3Fphone%3D92985045009%26type%3Dphone_number%26app_absent%3D0%26wame_ctl%3D1%26fbclid%3DPAZXh0bgNhZW0CMTEAAac7l2f2twjyEY9NFmhxsbRZHQYo04_VrxtNAUWwivR-7n1AsM0Q1FQ48mCc3g_aem_1C9ZohV3XVjpfyKimCn17A&e=AT05WcZuuP7P0froEBwhaiF0EU5ltqTqkZaMtieVfxI91wljm2JXV-B-u4030oFz4pLmmnioI5jhxM7aNHO7Sf8UkvAv4jVRRMqgXZ9OfIL372YaCkCD9k0" target="_blank" class="btn btn-whatsapp">
+                                    <i class="fab fa-whatsapp"></i> Consultar WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="servicos" class="services">
             <div class="container">
                 <h2 class="section-title">Nossos Serviços</h2>
@@ -164,7 +195,7 @@
                         </div>
                     </div>
                     <div class="about-image">
-                        <img src="https://via.placeholder.com/400x300/ED775A/FFFFFF?text=Sobre+Nos" alt="Sobre nós">
+                        <img src="profile.jpg" alt="Kelly - Studio Kelly Nail">
                     </div>
                 </div>
             </div>
@@ -213,34 +244,30 @@
                         </div>
                     </div>
                     <div class="contact-form">
-                        <form>
+                        <form id="whatsappForm">
                             <div class="form-group">
                                 <label for="nome">Nome</label>
                                 <input type="text" id="nome" name="nome" required>
                             </div>
                             <div class="form-group">
-                                <label for="telefone">Telefone</label>
-                                <input type="tel" id="telefone" name="telefone" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">E-mail</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
                                 <label for="servico">Serviço de Interesse</label>
                                 <select id="servico" name="servico" required>
                                     <option value="">Selecione um serviço</option>
-                                    <option value="manicure">Manicure</option>
-                                    <option value="pedicure">Pedicure</option>
-                                    <option value="nail-art">Nail Art</option>
-                                    <option value="alongamento">Alongamento</option>
+                                    <option value="Manicure">Manicure</option>
+                                    <option value="Pedicure">Pedicure</option>
+                                    <option value="Nail Art">Nail Art</option>
+                                    <option value="Alongamento">Alongamento</option>
+                                    <option value="Pacote Manicure + Pedicure">Pacote Manicure + Pedicure</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="mensagem">Mensagem</label>
-                                <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+                                <label for="mensagem">Mensagem (opcional)</label>
+                                <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte-nos mais sobre o que você precisa..."></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fab fa-whatsapp"></i>
+                                Enviar via WhatsApp
+                            </button>
                         </form>
                     </div>
                 </div>

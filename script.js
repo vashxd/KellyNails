@@ -70,30 +70,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    const contactForm = document.querySelector('.contact-form form');
+    const whatsappForm = document.getElementById('whatsappForm');
     
-    contactForm.addEventListener('submit', function(e) {
+    whatsappForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
         const nome = document.getElementById('nome').value;
-        const telefone = document.getElementById('telefone').value;
-        const email = document.getElementById('email').value;
         const servico = document.getElementById('servico').value;
         const mensagem = document.getElementById('mensagem').value;
         
-        if (!nome || !telefone || !email || !servico) {
-            alert('Por favor, preencha todos os campos obrigatórios.');
+        if (!nome || !servico) {
+            alert('Por favor, preencha o nome e selecione um serviço.');
             return;
         }
         
-        const whatsappMessage = `Olá! Gostaria de agendar um horário.\n\nNome: ${nome}\nTelefone: ${telefone}\nE-mail: ${email}\nServiço: ${servico}\nMensagem: ${mensagem}`;
+        let whatsappMessage = `Olá! Meu nome é *${nome}* e gostaria de agendar um horário.\n\n`;
+        whatsappMessage += `🎯 *Serviço desejado:* ${servico}\n\n`;
+        
+        if (mensagem.trim()) {
+            whatsappMessage += `💬 *Mensagem:* ${mensagem}\n\n`;
+        }
+        
+        whatsappMessage += `Aguardo o retorno para confirmar data e horário! 😊`;
         
         const whatsappUrl = `https://wa.me/5592985045009?text=${encodeURIComponent(whatsappMessage)}`;
         
         window.open(whatsappUrl, '_blank');
         
-        contactForm.reset();
-        alert('Redirecionando para o WhatsApp...');
+        whatsappForm.reset();
     });
 
     

@@ -188,6 +188,89 @@ main {
     margin-bottom: 3rem;
 }
 
+.promo-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--white);
+}
+
+.promo-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.promo-video {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.promo-video video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.promo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.promo-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.promo-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--white);
+}
+
+.promo-highlight {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+}
+
+.promo-price {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--tertiary-color);
+}
+
+.promo-cta {
+    margin-top: 1rem;
+}
+
+.btn-whatsapp {
+    background: #25D366;
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+    background: #128C7E;
+    transform: translateY(-2px);
+}
+
 .services {
     padding: 5rem 0;
     background: var(--white);
@@ -506,6 +589,24 @@ main {
 
     .hero-text h2 {
         font-size: 2rem;
+    }
+
+    .promo-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .promo-video {
+        order: -1;
+    }
+
+    .promo-card {
+        padding: 1.5rem;
+    }
+
+    .promo-card h3 {
+        font-size: 1.3rem;
     }
 
     .section-title {
