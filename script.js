@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let currentSlide = 0;
     const totalSlides = slides.length;
+    let autoplayInterval;
+    let isModalOpen = false;
 
     function updateCarousel() {
         const translateX = -currentSlide * 100;
@@ -30,10 +32,21 @@ document.addEventListener('DOMContentLoaded', function() {
         updateCarousel();
     }
 
+    function startAutoplay() {
+        if (!isModalOpen) {
+            autoplayInterval = setInterval(nextSlide, 5000);
+        }
+    }
+
+    function stopAutoplay() {
+        clearInterval(autoplayInterval);
+    }
+
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
 
-    setInterval(nextSlide, 5000);
+    // Start autoplay initially
+    startAutoplay();
 
     const navLinks = document.querySelectorAll('.navbar a, .footer-section a');
     
@@ -75,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const whatsappMessage = `Olá! Gostaria de agendar um horário.\n\nNome: ${nome}\nTelefone: ${telefone}\nE-mail: ${email}\nServiço: ${servico}\nMensagem: ${mensagem}`;
         
-        const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(whatsappMessage)}`;
+        const whatsappUrl = `https://wa.me/5592985045009?text=${encodeURIComponent(whatsappMessage)}`;
         
         window.open(whatsappUrl, '_blank');
         
@@ -83,15 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Redirecionando para o WhatsApp...');
     });
 
-    const whatsappLinks = document.querySelectorAll('a[href="#"]');
-    whatsappLinks.forEach(link => {
-        if (link.innerHTML.includes('fa-whatsapp')) {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.open('https://wa.me/5511999999999', '_blank');
-            });
-        }
-    });
+    
 
     const serviceCards = document.querySelectorAll('.service-card');
     
@@ -127,46 +132,47 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    async function loadInstagramPosts() {
-        try {
-            const instagramImages = [
-                'https://picsum.photos/400/400?random=1',
-                'https://picsum.photos/400/400?random=2', 
-                'https://picsum.photos/400/400?random=3',
-                'https://picsum.photos/400/400?random=4',
-                'https://picsum.photos/400/400?random=5',
-                'https://picsum.photos/400/400?random=6'
-            ];
+    // Modal functionality
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const closeModal = document.querySelector('.close-modal');
+    const carouselImages = document.querySelectorAll('.carousel-slide img');
 
-            const carouselContainer = document.querySelector('.carousel-container');
-            carouselContainer.innerHTML = '';
+    // Add click event to all carousel images
+    carouselImages.forEach(img => {
+        img.addEventListener('click', function() {
+            modal.style.display = 'block';
+            modalImage.src = this.src;
+            modalImage.alt = this.alt;
+            isModalOpen = true;
+            stopAutoplay();
+        });
+    });
 
-            instagramImages.forEach((imageUrl, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'carousel-slide';
-                
-                const img = document.createElement('img');
-                img.src = imageUrl;
-                img.alt = `Trabalho ${index + 1}`;
-                img.loading = 'lazy';
-                
-                slide.appendChild(img);
-                carouselContainer.appendChild(slide);
-            });
+    // Close modal when clicking the X
+    closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+        isModalOpen = false;
+        startAutoplay();
+    });
 
-            const newSlides = document.querySelectorAll('.carousel-slide');
-            
-            if (newSlides.length > 0) {
-                currentSlide = 0;
-                updateCarousel();
-            }
-
-        } catch (error) {
-            console.log('Erro ao carregar imagens do Instagram:', error);
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            isModalOpen = false;
+            startAutoplay();
         }
-    }
+    });
 
-    loadInstagramPosts();
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            modal.style.display = 'none';
+            isModalOpen = false;
+            startAutoplay();
+        }
+    });
 });
 
 const style = document.createElement('style');
